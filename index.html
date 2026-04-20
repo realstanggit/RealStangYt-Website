@@ -1,0 +1,37 @@
+<head>
+  <link rel="stylesheet" href="style.css">
+
+  
+</head>
+
+
+<body>
+    <div class = "centered-container">
+        <div class = "text1">Real_stang's Website</div>
+        <div class = "centered-container1" id = "blog">
+
+        </div>
+        <script>
+            async function FeedBlogs(sources) {
+                const container = document.getElementById('blog');
+                // Loop through the list of blog files in order
+                 for (const src of sources) {
+                    try {
+                        const response = await fetch(src);
+                        const data = await response.text();
+                        container.innerHTML += data;
+                    } catch (error) {
+                        console.error("Error loading " + src, error);
+                    }
+                }
+            }
+            // Pass your blogs in the exact order you want them displayed
+            FeedBlogs([
+                "blogs/blog2.html", 
+                "blogs/blog1.html", 
+                "blogs/finalpage.html"
+            ]);
+        </script>
+
+    </div>
+</body>
